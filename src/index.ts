@@ -165,7 +165,9 @@ export default async function pluginRemoteContent(
                     { recursive: true }
                 )
             }
-
+            if (newIdent.split(".").pop() === "json") {
+                content = JSON.stringify(content)
+            }
             writeFileSync(join(await getTargetDirectory(), newIdent), content)
         }
     }
